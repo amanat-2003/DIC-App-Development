@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class GradientContainer extends StatelessWidget {
   const GradientContainer({super.key});
@@ -6,23 +7,41 @@ class GradientContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-        colors: [
-          Color.fromARGB(255, 26, 3, 233),
-          Color.fromARGB(255, 59, 134, 255)
-        ],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      )),
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Colors.blue,
+          const Color.fromARGB(255, 150, 188, 255)
+        ])),
+        child: const ImageWidget());
+  }
+}
+
+class ImageWidget extends StatefulWidget {
+  const ImageWidget({super.key});
+
+  @override
+  State<ImageWidget> createState() => _ImageWidgetState();
+}
+
+class _ImageWidgetState extends State<ImageWidget> {
+  var noOfImage = 4;
+  var randomObj = Random();
+  @override
+  Widget build(BuildContext context) {
+    return Center(
       child: Column(
-        // mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/images/dice-1.png'),
+          Image.asset('assets/images/dice-$noOfImage.png', width: 200),
           TextButton(
-            child: Text('Roll Dice'),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                noOfImage = randomObj.nextInt(6) + 1; // 1,2,3,4,5,6
+              });
+              print('fxn called');
+            },
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Roll Dice', style: TextStyle(fontSize: 20)),
           ),
         ],
       ),
