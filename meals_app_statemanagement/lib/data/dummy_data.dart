@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app_tutorial/enums%20and%20extensions/all.dart';
 
-import 'package:meals_app/models/category.dart';
-import 'package:meals_app/models/meal.dart';
+import 'package:meals_app_tutorial/models/category.dart';
+import 'package:meals_app_tutorial/models/meal.dart';
 
 // Constants in Dart should be written in lowerCamelcase.
 const availableCategories = [
